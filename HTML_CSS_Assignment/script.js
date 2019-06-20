@@ -26,6 +26,7 @@ function validate1()
 			document.getElementById("result2").style.display = "none";
 			document.getElementById("result3").style.display = "none";
 			document.getElementById("result4").style.display = "none";
+			window.location = "table.html";
 		}
 	else
 		{
