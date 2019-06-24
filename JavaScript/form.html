@@ -57,7 +57,7 @@
 	  </div>
 	<div id="edit" style="display: none;">
 	  <div id="edit_form" style= "display: none;">
-			<form onsubmit="edit_submit();">
+			<form>
 				<p id="p2">Edit Employee Form</p>
 				<input type="hidden" id="index_edit">
 				<div id="div22">
@@ -81,7 +81,7 @@
 					Remarks <input type="textarea" name="remarks" placeholder="Enter Remarks" required id="remarksedit"> 
 					<br><br>
 				</div>
-				<button type="submit">Submit</button>
+				<button type="button" onclick="edit_submit();">Submit</button>
 				  <button type="reset" onclick="validate2();">Clear</button>
 			  </form>
 		  </div>

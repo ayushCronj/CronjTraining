@@ -57,6 +57,7 @@ function edit_submit() {
 		employee[empindex].addremarks = empremark;
 	}
 	window.localStorage.setItem("employee", JSON.stringify(employee));
+	list();
 }
 
 function search1() {
@@ -152,22 +153,8 @@ function delete111(index) {
 	var test = window.localStorage.getItem("employee");
 	test = JSON.parse(test);
 	test.splice(index,1);
-
-	var xlen = test.length;
-	var t = ' <br><br> <center>UPDATED TABLE <center><br> <br><table><tr><th> Name </th> <th> Age </th> <th> Email </th> <th> Salary </th> <th> Remarks </th> </tr>';
-	var xlen = test.length;
-	for (var i = 0; i < xlen; i++) {
-		t += '<tr>';
-		t += '<td>' + test[i].addname + '</td>' ;
-		t += '<td>' + test[i].addage + '</td>';
-		t += '<td>' + test[i].addemail + '</td>';
-		t += '<td>' + test[i].addsalary + '</td>';
-		t += '<td>' + test[i].addremarks + '</td>';
-		t += '</tr>';
-	}
-	t += '</table>';
-	document.getElementById('showdelete').innerHTML = t;
 	window.localStorage.setItem("employee", JSON.stringify(test));
+	list();
 }
 
 function edit1() {
