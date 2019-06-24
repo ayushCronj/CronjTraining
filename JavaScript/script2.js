@@ -110,6 +110,7 @@ function list() {
 	document.getElementById('search').style.display = 'none';
 	document.getElementById('delete').style.display = 'none';
 	document.getElementById('edit').style.display = 'none';
+	list_display();
 }
 
 function delete1() {
@@ -123,39 +124,50 @@ function delete1() {
 	document.getElementById('search').style.display = 'none';
 	document.getElementById('delete').style.display = 'block';
 	document.getElementById('edit').style.display = 'none';
+	delete11();
 }
 
 function delete11() {
 	var test = window.localStorage.getItem("employee");
 	test = JSON.parse(test);
-	var res = [];
-	var namedelete= document.getElementById("name11").value;
-	var emaildelete = document.getElementById("email11").value;
+	var i;
 	var xlen = test.length;
-	if(namedelete == "" || emaildelete == "") {
-		alert("Enter both fields");
-	} else {
-		for(let i=0;i<xlen;i++) {
-			if(test[i].addname == namedelete && test[i].addemail == emaildelete) {
-				test.splice(i,1);
-			}
-		}
-	// console.log(test);
-		var t = ' <br><br> <center>UPDATED TABLE <center><br> <br><table><tr><th> Name </th> <th> Age </th> <th> Email </th> <th> Salary </th> <th> Remarks </th> </tr>';
-		var xlen = test.length;
-		for (var i = 0; i < xlen; i++) {
-			t += '<tr>';
-			t += '<td>' + test[i].addname + '</td>' ;
-			t += '<td>' + test[i].addage + '</td>';
-			t += '<td>' + test[i].addemail + '</td>';
-			t += '<td>' + test[i].addsalary + '</td>';
-			t += '<td>' + test[i].addremarks + '</td>';
-			t += '</tr>';
-		}
-		t += '</table>';
-		document.getElementById('showdelete').innerHTML = t;
-		window.localStorage.setItem("employee", JSON.stringify(test));
+	var t = '<br><table><tr><th> Name </th> <th> Age </th> <th> Email </th> <th> Salary </th> <th> Remarks </th>  <th> Edit </th></tr>';
+	for( i=0 ; i<xlen ; i++) {
+		t += '<tr>';
+		t += '<td>' + test[i].addname + '</td>' ;
+		t += '<td>' + test[i].addage + '</td>';
+		t += '<td>' + test[i].addemail + '</td>';
+		t += '<td>' + test[i].addsalary + '</td>';
+		t += '<td>' + test[i].addremarks + '</td>';
+		t += '<td> <button id="edit_' + i + '" onclick = "delete111('+ i +');"> Delete </button>';
+		t += '</tr>';
 	}
+	t += '</table>';
+	// console.log(test);
+	document.getElementById('showdelete').style.display= "block";
+	document.getElementById('showdelete').innerHTML = t;
+}
+function delete111(index) {
+	var test = window.localStorage.getItem("employee");
+	test = JSON.parse(test);
+	test.splice(index,1);
+
+	var xlen = test.length;
+	var t = ' <br><br> <center>UPDATED TABLE <center><br> <br><table><tr><th> Name </th> <th> Age </th> <th> Email </th> <th> Salary </th> <th> Remarks </th> </tr>';
+	var xlen = test.length;
+	for (var i = 0; i < xlen; i++) {
+		t += '<tr>';
+		t += '<td>' + test[i].addname + '</td>' ;
+		t += '<td>' + test[i].addage + '</td>';
+		t += '<td>' + test[i].addemail + '</td>';
+		t += '<td>' + test[i].addsalary + '</td>';
+		t += '<td>' + test[i].addremarks + '</td>';
+		t += '</tr>';
+	}
+	t += '</table>';
+	document.getElementById('showdelete').innerHTML = t;
+	window.localStorage.setItem("employee", JSON.stringify(test));
 }
 
 function edit1() {
@@ -205,7 +217,7 @@ function edit111(index) {
 	document.getElementById('remarksedit').value = test[index].addremarks;
 	document.getElementById('edit_form').style.display = "block";
 }
-
+function list_display(){
 var test = window.localStorage.getItem("employee");
 if(test) {
 	test = JSON.parse(test);
@@ -224,3 +236,4 @@ tbl += '</tr>';
 tbl += '</table>';
 console.log(tbl);
 document.getElementById('tab').innerHTML = tbl;
+}
