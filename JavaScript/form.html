@@ -12,8 +12,9 @@
 				<li id="addtab" class="active" onclick="add();"><a href="#">Add</a></li>
 				<li id="listtab" onclick="list();"><a href="#">List</a>
 				<li id="searchtab" onclick="search1();"><a href="#">Search</a>
-				<li id="edittab" onclick="edit();"><a href="#">Edit/Delete</a>
-				</ul>
+				<li id="edittab" onclick="edit1();"><a href="#">Edit</a>
+				<li id="deletetab" onclick="delete1();"><a href="#">Delete</a>
+			</ul>
 		</div>
 		<div id="div1" onsubmit="add();">
 		<form>
@@ -50,7 +51,56 @@
 		<div>
 			Search : 
 			<input id="search11" type="text" placeholder="Enter Search Query" onkeyup="search();">
-		<div id="show">
+		</div>
+			<div id="show">
+			</div>
+	  </div>
+	<div id="edit" style="display: none;">
+	  <div id="edit_form" style= "display: none;">
+			<form onsubmit="edit_submit();">
+				<p id="p2">Edit Employee Form</p>
+				<input type="hidden" id="index_edit">
+				<div id="div22">
+					Name <input type="text" name="name" placeholder="Enter Name" required id="nameedit"> 
+					<br><br>
+				</div>
+				<div id="div33">
+					Age <input type="number" name="age" placeholder="Enter Age" required id="ageedit"> 
+					<br>
+					<br>
+				</div>
+				<div id="div44">
+					Email ID <input type="email" name="email" placeholder="Enter email ID" required id="emailedit"> 
+					<br><br>
+				</div>
+				<div id="div55">
+					Salary <input type="number" name="salary" placeholder="Enter Salary" required id="salaryedit"> 
+					<br><br>
+				</div>
+				<div id="div66">
+					Remarks <input type="textarea" name="remarks" placeholder="Enter Remarks" required id="remarksedit"> 
+					<br><br>
+				</div>
+				<button type="submit">Submit</button>
+				  <button type="reset" onclick="validate2();">Clear</button>
+			  </form>
+		  </div>
+		  <div id="showtable">
+			  </div>
+	</div>
+
+	  <div id="delete" style="display: none";>
+		<div>
+			Enter employee Name to be deleted: 
+			<input id="name11" type="text" placeholder="Enter Name">
+			<br>
+			Also enter employee Email : 
+			<input id="email11" type="text" placeholder="Enter Email">
+			<br>
+			<button type="button" onclick="delete11();"> Submit </button>
+			</div>
+		<div id="showdelete">
+
 			</div>
 	  </div>
 </body>
