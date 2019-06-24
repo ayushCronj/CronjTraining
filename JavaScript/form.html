@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin Panel</title>
+	<link rel="stylesheet" href="style2.css">
+	<script>
+	</script>
+</head>
+<body>
+		<div id="nav">
+			<ul>
+				<li id="addtab" class="active" onclick="add();"><a href="#">Add</a></li>
+				<li id="listtab" onclick="list();"><a href="#">List</a>
+				<li id="searchtab" onclick="search1();"><a href="#">Search</a>
+				<li id="edittab" onclick="edit();"><a href="#">Edit/Delete</a>
+				</ul>
+		</div>
+		<div id="div1" onsubmit="add();">
+		<form>
+			<p id="p1">Add Employee Form</p>
+			<div id="div2">
+				Name <input type="text" name="name" placeholder="Enter Name" required id="name"> 
+				<br><br>
+			</div>
+			<div id="div3">
+				Age <input type="number" name="age" placeholder="Enter Age" required id="age"> 
+				<br>
+				<br>
+            </div>
+            <div id="div4">
+				Email ID <input type="email" name="email" placeholder="Enter email ID" required id="email"> 
+				<br><br>
+            </div>
+            <div id="div5">
+				Salary <input type="number" name="salary" placeholder="Enter Salary" required id="salary"> 
+				<br><br>
+            </div>
+            <div id="div6">
+				Remarks <input type="textarea" name="remarks" placeholder="Enter Remarks" required id="remarks"> 
+				<br><br>
+			</div>
+			<button type="submit">Submit</button>
+  			<button type="reset" onclick="validate2();">Clear</button>
+  		</form>
+	  </div>
+	  <div id="tab">
+
+	  </div>
+	  <div id="search" style="display: none";>
+		<div>
+			Search : 
+			<input id="search11" type="text" placeholder="Enter Search Query" onkeyup="search();">
+		<div id="show">
+			</div>
+	  </div>
+</body>
+ <script type="text/javascript" src="script2.js"></script>
+</html>

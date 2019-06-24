@@ -1,0 +1,41 @@
+#div1
+{
+    text-align: center;
+    border: solid;
+    margin-left: 400px;
+    margin-right: 400px;
+    margin-top: 100px;
+    margin-bottom: 400px;
+}
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+ul {
+    list-style-type:  none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  li {
+      float: left;
+  }
+  
+  li a {
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+li a:hover:not(.active) {
+    background-color: black;
+  }
+  
+.active {
+    background-color: #4CAF50;
+}
