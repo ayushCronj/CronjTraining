@@ -8,10 +8,74 @@ document.getElementById('tab').style.display = "none";
 document.getElementById('search').style.display = 'none';
 document.getElementById('delete').style.display = 'none';
 document.getElementById('edit').style.display = 'none';
-function add() {
+document.getElementById('result1').style.display = 'none';
+document.getElementById('result2').style.display = 'none';
+document.getElementById('result3').style.display = 'none';
+document.getElementById('result4').style.display = 'none';
+document.getElementById('result5').style.display = 'none';
+document.getElementById('result6').style.display = 'none';
+document.getElementById('result7').style.display = 'none';
+document.getElementById('result8').style.display = 'none';
+document.getElementById('result9').style.display = 'none';
+document.getElementById('result10').style.display = 'none';
+document.getElementById('result11').style.display = 'none';
+
+function emailsame(inputText) {
+	var test = window.localStorage.getItem("employee");
+	if(test) {
+		employee = JSON.parse(test);
+	}
+	var emplen = employee.length;
+	for(var i=0; i<emplen;i++)
+	{
+		if(employee[i].addemail == inputText)
+			return false;
+	}
+	return true;
+}
+function emailsame1(inputText , index) {
+	var test = window.localStorage.getItem("employee");
+	if(test) {
+		employee = JSON.parse(test);
+	}
+	var emplen = employee.length;
+	for(var i=0; i<emplen;i++)
+	{
+		if(employee[i].addemail == inputText && index!=i)
+			return false;
+	}
+	return true;
+}
+function emailvalidate(inputText) {
+	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+	if( inputText.match( mailformat ) ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+function nameValidate(inputText) {
+	var reg = /^[a-zA-Z\s]*$/;
+	if(inputText.match( reg))
+		return true;
+	else
+		return false;
+}
+function agevalidate(inputText) {
+	var reg = /^[0-9]+$/;
+	if(inputText.match( reg)) {
+		return true; } else {
+		return false; }
+}
+function salVaildate(inputText) {
+	var reg = /^[0-9]+[.]{0,1}[0-9]{0,4}$/;
+	if(inputText.match( reg)) {
+		return true; } else {
+		return false; }
+} 
+function add1 () {
 	document.getElementById('div1').style.display = "block";
 	document.getElementById('addtab').classList.add('active');
-	document.getElementById('listtab').classList.remove('active');
 	document.getElementById('searchtab').classList.remove('active');
 	document.getElementById('deletetab').classList.remove('active');
 	document.getElementById('edittab').classList.remove('active');
@@ -19,21 +83,162 @@ function add() {
 	document.getElementById('search').style.display = 'none';
 	document.getElementById('delete').style.display = 'none';
 	document.getElementById('edit').style.display = 'none';
+}
+function add() {
 	var employee = [];
 	var empname = document.getElementById("name").value;
 	var empage = document.getElementById("age").value;
 	var empemail = document.getElementById("email").value;
 	var empsal = document.getElementById("salary").value;
 	var empremark = document.getElementById("remarks").value;
+	if (empname == "") {
+		document.getElementById('result1').style.display = 'block';
+		document.getElementById('result2').style.display = 'none';
+		document.getElementById('result3').style.display = 'none';
+		document.getElementById('result4').style.display = 'none';
+		document.getElementById('result5').style.display = 'none';
+		document.getElementById('result6').style.display = 'none';
+		document.getElementById('result7').style.display = 'none';
+		document.getElementById('result8').style.display = 'none';
+		document.getElementById('result9').style.display = 'none';
+		document.getElementById('result10').style.display = 'none';
+		document.getElementById('result11').style.display = 'none';
+	} else if (!(nameValidate(empname))) {
+		document.getElementById('result1').style.display = 'none';
+		document.getElementById('result2').style.display = 'block';
+		document.getElementById('result3').style.display = 'none';
+		document.getElementById('result4').style.display = 'none';
+		document.getElementById('result5').style.display = 'none';
+		document.getElementById('result6').style.display = 'none';
+		document.getElementById('result7').style.display = 'none';
+		document.getElementById('result8').style.display = 'none';
+		document.getElementById('result9').style.display = 'none';
+		document.getElementById('result10').style.display = 'none';
+		document.getElementById('result11').style.display = 'none';
+
+	} else if (empage == "") {
+		document.getElementById('result1').style.display = 'none';
+		document.getElementById('result2').style.display = 'none';
+		document.getElementById('result3').style.display = 'block';
+		document.getElementById('result4').style.display = 'none';
+		document.getElementById('result5').style.display = 'none';
+		document.getElementById('result6').style.display = 'none';
+		document.getElementById('result7').style.display = 'none';
+		document.getElementById('result8').style.display = 'none';
+		document.getElementById('result9').style.display = 'none';
+		document.getElementById('result10').style.display = 'none';
+		document.getElementById('result11').style.display = 'none';
+
+	} else if (!(agevalidate(empage))) {
+		document.getElementById('result1').style.display = 'none';
+		document.getElementById('result2').style.display = 'none';
+		document.getElementById('result3').style.display = 'none';
+		document.getElementById('result4').style.display = 'block';
+		document.getElementById('result5').style.display = 'none';
+		document.getElementById('result6').style.display = 'none';
+		document.getElementById('result7').style.display = 'none';
+		document.getElementById('result8').style.display = 'none';
+		document.getElementById('result9').style.display = 'none';
+		document.getElementById('result10').style.display = 'none';
+		document.getElementById('result11').style.display = 'none';
+
+	} else if (empemail == "") {
+		document.getElementById('result1').style.display = 'none';
+		document.getElementById('result2').style.display = 'none';
+		document.getElementById('result3').style.display = 'none';
+		document.getElementById('result4').style.display = 'none';
+		document.getElementById('result5').style.display = 'block';
+		document.getElementById('result6').style.display = 'none';
+		document.getElementById('result7').style.display = 'none';
+		document.getElementById('result8').style.display = 'none';
+		document.getElementById('result9').style.display = 'none';
+		document.getElementById('result10').style.display = 'none';
+		document.getElementById('result11').style.display = 'none';
+
+	} else if (!(emailvalidate(empemail))) {
+		document.getElementById('result1').style.display = 'none';
+		document.getElementById('result2').style.display = 'none';
+		document.getElementById('result3').style.display = 'none';
+		document.getElementById('result4').style.display = 'none';
+		document.getElementById('result5').style.display = 'none';
+		document.getElementById('result6').style.display = 'block';
+		document.getElementById('result7').style.display = 'none';
+		document.getElementById('result8').style.display = 'none';
+		document.getElementById('result9').style.display = 'none';
+		document.getElementById('result10').style.display = 'none';
+		document.getElementById('result11').style.display = 'none';
+
+	} else if (!(emailsame(empemail))) {
+		document.getElementById('result1').style.display = 'none';
+		document.getElementById('result2').style.display = 'none';
+		document.getElementById('result3').style.display = 'none';
+		document.getElementById('result4').style.display = 'none';
+		document.getElementById('result5').style.display = 'none';
+		document.getElementById('result6').style.display = 'none';
+		document.getElementById('result7').style.display = 'block';
+		document.getElementById('result8').style.display = 'none';
+		document.getElementById('result9').style.display = 'none';
+		document.getElementById('result10').style.display = 'none';
+		document.getElementById('result11').style.display = 'none';
+	} else if (empsal == "") {
+		document.getElementById('result1').style.display = 'none';
+		document.getElementById('result2').style.display = 'none';
+		document.getElementById('result3').style.display = 'none';
+		document.getElementById('result4').style.display = 'none';
+		document.getElementById('result5').style.display = 'none';
+		document.getElementById('result6').style.display = 'none';
+		document.getElementById('result7').style.display = 'none';
+		document.getElementById('result8').style.display = 'block';
+		document.getElementById('result9').style.display = 'none';
+		document.getElementById('result10').style.display = 'none';
+		document.getElementById('result11').style.display = 'none';
+
+	} else if (!(salVaildate(empsal))) {
+		document.getElementById('result1').style.display = 'none';
+		document.getElementById('result2').style.display = 'none';
+		document.getElementById('result3').style.display = 'none';
+		document.getElementById('result4').style.display = 'none';
+		document.getElementById('result5').style.display = 'none';
+		document.getElementById('result6').style.display = 'none';
+		document.getElementById('result7').style.display = 'none';
+		document.getElementById('result8').style.display = 'none';
+		document.getElementById('result9').style.display = 'block';
+		document.getElementById('result10').style.display = 'none';
+		document.getElementById('result11').style.display = 'none';
+
+	} else if(empremark == "") {
+		document.getElementById('result1').style.display = 'none';
+		document.getElementById('result2').style.display = 'none';
+		document.getElementById('result3').style.display = 'none';
+		document.getElementById('result4').style.display = 'none';
+		document.getElementById('result5').style.display = 'none';
+		document.getElementById('result6').style.display = 'none';
+		document.getElementById('result7').style.display = 'none';
+		document.getElementById('result8').style.display = 'none';
+		document.getElementById('result9').style.display = 'none';
+		document.getElementById('result10').style.display = 'block';
+		document.getElementById('result11').style.display = 'none';
+
+	} else {
+		document.getElementById('result1').style.display = 'none';
+		document.getElementById('result2').style.display = 'none';
+		document.getElementById('result3').style.display = 'none';
+		document.getElementById('result4').style.display = 'none';
+		document.getElementById('result5').style.display = 'none';
+		document.getElementById('result6').style.display = 'none';
+		document.getElementById('result7').style.display = 'none';
+		document.getElementById('result8').style.display = 'none';
+		document.getElementById('result9').style.display = 'none';
+		document.getElementById('result10').style.display = 'none';
+		document.getElementById('result11').style.display = 'none';
 	var test = window.localStorage.getItem("employee");
 	if(test) {
 		employee = JSON.parse(test);
 	}
-	// console.log(employee);
-	if(!(empname == "" || empemail == "" || empage == "" || empremark == "" || empsal == "")) {
-		employee.push( { "addname" : empname, "addage" : empage, "addemail" : empemail, "addsalary" : empsal, "addremarks" : empremark} );
-	}
+	employee.push( { "addname" : empname, "addage" : empage, "addemail" : empemail, "addsalary" : empsal, "addremarks" : empremark} );
 	window.localStorage.setItem("employee", JSON.stringify(employee));
+	document.getElementById('result11').style.display = 'block';
+	}
 }
 
 function edit_submit() {
@@ -44,20 +249,157 @@ function edit_submit() {
 	var empemail = document.getElementById("emailedit").value;
 	var empsal = document.getElementById("salaryedit").value;
 	var empremark = document.getElementById("remarksedit").value;
-	var test = window.localStorage.getItem("employee");
-	if(test) {
-		employee = JSON.parse(test);
-	}
-	// console.log(employee);
-	if(!(empname == "" || empemail == "" || empage == "" || empremark == "" || empsal == "")) {
+	if (empname == "") {
+		document.getElementById('result1e').style.display = 'block';
+		document.getElementById('result2e').style.display = 'none';
+		document.getElementById('result3e').style.display = 'none';
+		document.getElementById('result4e').style.display = 'none';
+		document.getElementById('result5e').style.display = 'none';
+		document.getElementById('result6e').style.display = 'none';
+		document.getElementById('result7e').style.display = 'none';
+		document.getElementById('result8e').style.display = 'none';
+		document.getElementById('result9e').style.display = 'none';
+		document.getElementById('result10e').style.display = 'none';
+		document.getElementById('result11e').style.display = 'none';
+	} else if (!(nameValidate(empname))) {
+		document.getElementById('result1e').style.display = 'none';
+		document.getElementById('result2e').style.display = 'block';
+		document.getElementById('result3e').style.display = 'none';
+		document.getElementById('result4e').style.display = 'none';
+		document.getElementById('result5e').style.display = 'none';
+		document.getElementById('result6e').style.display = 'none';
+		document.getElementById('result7e').style.display = 'none';
+		document.getElementById('result8e').style.display = 'none';
+		document.getElementById('result9e').style.display = 'none';
+		document.getElementById('result10e').style.display = 'none';
+		document.getElementById('result11e').style.display = 'none';
+	} else if (empage == "") {
+		document.getElementById('result1e').style.display = 'none';
+		document.getElementById('result2e').style.display = 'none';
+		document.getElementById('result3e').style.display = 'block';
+		document.getElementById('result4e').style.display = 'none';
+		document.getElementById('result5e').style.display = 'none';
+		document.getElementById('result6e').style.display = 'none';
+		document.getElementById('result7e').style.display = 'none';
+		document.getElementById('result8e').style.display = 'none';
+		document.getElementById('result9e').style.display = 'none';
+		document.getElementById('result10e').style.display = 'none';
+		document.getElementById('result11e').style.display = 'none';
+	} else if (!(agevalidate(empage))) {
+		document.getElementById('result1e').style.display = 'none';
+		document.getElementById('result2e').style.display = 'none';
+		document.getElementById('result3e').style.display = 'none';
+		document.getElementById('result4e').style.display = 'block';
+		document.getElementById('result5e').style.display = 'none';
+		document.getElementById('result6e').style.display = 'none';
+		document.getElementById('result7e').style.display = 'none';
+		document.getElementById('result8e').style.display = 'none';
+		document.getElementById('result9e').style.display = 'none';
+		document.getElementById('result10e').style.display = 'none';
+		document.getElementById('result11e').style.display = 'none';
+
+	} else if (empemail == "") {
+		document.getElementById('result1e').style.display = 'none';
+		document.getElementById('result2e').style.display = 'none';
+		document.getElementById('result3e').style.display = 'none';
+		document.getElementById('result4e').style.display = 'none';
+		document.getElementById('result5e').style.display = 'block';
+		document.getElementById('result6e').style.display = 'none';
+		document.getElementById('result7e').style.display = 'none';
+		document.getElementById('result8e').style.display = 'none';
+		document.getElementById('result9e').style.display = 'none';
+		document.getElementById('result10e').style.display = 'none';
+		document.getElementById('result11e').style.display = 'none';
+
+	} else if (!(emailvalidate(empemail))) {
+		document.getElementById('result1e').style.display = 'none';
+		document.getElementById('result2e').style.display = 'none';
+		document.getElementById('result3e').style.display = 'none';
+		document.getElementById('result4e').style.display = 'none';
+		document.getElementById('result5e').style.display = 'none';
+		document.getElementById('result6e').style.display = 'block';
+		document.getElementById('result7e').style.display = 'none';
+		document.getElementById('result8e').style.display = 'none';
+		document.getElementById('result9e').style.display = 'none';
+		document.getElementById('result10e').style.display = 'none';
+		document.getElementById('result11e').style.display = 'none';
+
+	} else if (!(emailsame1(empemail, empindex))) {
+		document.getElementById('result1e').style.display = 'none';
+		document.getElementById('result2e').style.display = 'none';
+		document.getElementById('result3e').style.display = 'none';
+		document.getElementById('result4e').style.display = 'none';
+		document.getElementById('result5e').style.display = 'none';
+		document.getElementById('result6e').style.display = 'none';
+		document.getElementById('result7e').style.display = 'block';
+		document.getElementById('result8e').style.display = 'none';
+		document.getElementById('result9e').style.display = 'none';
+		document.getElementById('result10e').style.display = 'none';
+		document.getElementById('result11e').style.display = 'none';
+	} else if (empsal == "") {
+		document.getElementById('result1e').style.display = 'none';
+		document.getElementById('result2e').style.display = 'none';
+		document.getElementById('result3e').style.display = 'none';
+		document.getElementById('result4e').style.display = 'none';
+		document.getElementById('result5e').style.display = 'none';
+		document.getElementById('result6e').style.display = 'none';
+		document.getElementById('result7e').style.display = 'none';
+		document.getElementById('result8e').style.display = 'block';
+		document.getElementById('result9e').style.display = 'none';
+		document.getElementById('result10e').style.display = 'none';
+		document.getElementById('result11e').style.display = 'none';
+
+	} else if (!(salVaildate(empsal))) {
+		document.getElementById('result1e').style.display = 'none';
+		document.getElementById('result2e').style.display = 'none';
+		document.getElementById('result3e').style.display = 'none';
+		document.getElementById('result4e').style.display = 'none';
+		document.getElementById('result5e').style.display = 'none';
+		document.getElementById('result6e').style.display = 'none';
+		document.getElementById('result7e').style.display = 'none';
+		document.getElementById('result8e').style.display = 'none';
+		document.getElementById('result9e').style.display = 'block';
+		document.getElementById('result10e').style.display = 'none';
+		document.getElementById('result11e').style.display = 'none';
+
+	} else if(empremark == "") {
+		document.getElementById('result1e').style.display = 'none';
+		document.getElementById('result2e').style.display = 'none';
+		document.getElementById('result3e').style.display = 'none';
+		document.getElementById('result4e').style.display = 'none';
+		document.getElementById('result5e').style.display = 'none';
+		document.getElementById('result6e').style.display = 'none';
+		document.getElementById('result7e').style.display = 'none';
+		document.getElementById('result8e').style.display = 'none';
+		document.getElementById('result9e').style.display = 'none';
+		document.getElementById('result10e').style.display = 'block';
+		document.getElementById('result11e').style.display = 'none';
+
+	} else {
+		document.getElementById('result1e').style.display = 'none';
+		document.getElementById('result2e').style.display = 'none';
+		document.getElementById('result3e').style.display = 'none';
+		document.getElementById('result4e').style.display = 'none';
+		document.getElementById('result5e').style.display = 'none';
+		document.getElementById('result6e').style.display = 'none';
+		document.getElementById('result7e').style.display = 'none';
+		document.getElementById('result8e').style.display = 'none';
+		document.getElementById('result9e').style.display = 'none';
+		document.getElementById('result10e').style.display = 'none';
+		document.getElementById('result11e').style.display = 'none';
+		var test = window.localStorage.getItem("employee");
+		if(test) {
+			employee = JSON.parse(test);
+		}
 		employee[empindex].addname = empname;
 		employee[empindex].addage = empage;
 		employee[empindex].addemail = empemail;
 		employee[empindex].addsalary = empsal;
 		employee[empindex].addremarks = empremark;
+		window.localStorage.setItem("employee", JSON.stringify(employee));
+		document.getElementById('result11').style.display = 'block';
+		list();
 	}
-	window.localStorage.setItem("employee", JSON.stringify(employee));
-	list();
 }
 
 function search1() {
@@ -133,7 +475,7 @@ function delete11() {
 	test = JSON.parse(test);
 	var i;
 	var xlen = test.length;
-	var t = '<br><table><tr><th> Name </th> <th> Age </th> <th> Email </th> <th> Salary </th> <th> Remarks </th>  <th> Edit </th></tr>';
+	var t = '<br><table><tr><th> Name </th> <th> Age </th> <th> Email </th> <th> Salary </th> <th> Remarks </th>  <th> Delete </th></tr>';
 	for( i=0 ; i<xlen ; i++) {
 		t += '<tr>';
 		t += '<td>' + test[i].addname + '</td>' ;
@@ -176,6 +518,17 @@ function edit11() {
 	test = JSON.parse(test);
 	var i;
 	var xlen = test.length;
+	document.getElementById('result1e').style.display = 'none';
+	document.getElementById('result2e').style.display = 'none';
+	document.getElementById('result3e').style.display = 'none';
+	document.getElementById('result4e').style.display = 'none';
+	document.getElementById('result5e').style.display = 'none';
+	document.getElementById('result6e').style.display = 'none';
+	document.getElementById('result7e').style.display = 'none';
+	document.getElementById('result8e').style.display = 'none';
+	document.getElementById('result9e').style.display = 'none';
+	document.getElementById('result10e').style.display = 'none';
+	document.getElementById('result11e').style.display = 'none';
 	var t = '<br><table><tr><th> Name </th> <th> Age </th> <th> Email </th> <th> Salary </th> <th> Remarks </th>  <th> Edit </th></tr>';
 	for( i=0 ; i<xlen ; i++) {
 		t += '<tr>';
@@ -205,22 +558,36 @@ function edit111(index) {
 	document.getElementById('edit_form').style.display = "block";
 }
 function list_display(){
-var test = window.localStorage.getItem("employee");
-if(test) {
-	test = JSON.parse(test);
+	var test = window.localStorage.getItem("employee");
+	if(test) {
+		test = JSON.parse(test);
+	}
+	var tbl= '<table><tr><th> Name </th> <th> Age </th> <th> Email </th> <th> Salary </th> <th> Remarks </th> </tr>';
+	var xlen = test.length;
+	for (var i = 0; i < xlen; i++) {
+		tbl += '<tr>';
+		tbl += '<td>' + test[i].addname + '</td>' ;
+		tbl += '<td>' + test[i].addage + '</td>';
+		tbl += '<td>' + test[i].addemail + '</td>';
+		tbl += '<td>' + test[i].addsalary + '</td>';
+		tbl += '<td>' + test[i].addremarks + '</td>';
+		tbl += '</tr>';
+	}
+	tbl += '</table>';
+	console.log(tbl);
+	document.getElementById('tab').innerHTML = tbl;
 }
-var tbl= '<table><tr><th> Name </th> <th> Age </th> <th> Email </th> <th> Salary </th> <th> Remarks </th> </tr>';
-var xlen = test.length;
-for (var i = 0; i < xlen; i++) {
-tbl += '<tr>';
-tbl += '<td>' + test[i].addname + '</td>' ;
-tbl += '<td>' + test[i].addage + '</td>';
-tbl += '<td>' + test[i].addemail + '</td>';
-tbl += '<td>' + test[i].addsalary + '</td>';
-tbl += '<td>' + test[i].addremarks + '</td>';
-tbl += '</tr>';
-}
-tbl += '</table>';
-console.log(tbl);
-document.getElementById('tab').innerHTML = tbl;
+function validate2()
+{
+	document.getElementById('result1').style.display = 'none';
+	document.getElementById('result2').style.display = 'none';
+	document.getElementById('result3').style.display = 'none';
+	document.getElementById('result4').style.display = 'none';
+	document.getElementById('result5').style.display = 'none';
+	document.getElementById('result6').style.display = 'none';
+	document.getElementById('result7').style.display = 'none';
+	document.getElementById('result8').style.display = 'none';
+	document.getElementById('result9').style.display = 'none';
+	document.getElementById('result10').style.display = 'none';
+	document.getElementById('result11').style.display = 'none';
 }

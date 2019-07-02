@@ -3,28 +3,24 @@
 <head>
 	<title>Login Form</title>
 	<link rel="stylesheet" href="style.css">
-
 </head>
 <body>
 	<div id="div1">
 		<form>
 			<p id="p1">Login Form</p>
 			<div id="div2">
-				Username / Email ID <input type="text" name="email" placeholder="Enter email ID" required id="email"> 
-				<br>
-				<span id="emailerror"> Please Enter E-mail in correct format </span>
-				<div id="result3"> Enter Username/Email </div>
-				<br>
+				Email ID <input type="email" name="email" placeholder="Enter email ID" required id="email"> 
+				<br><br>
 			</div>
 			<div id="div3">
 				Password <input type="password" name="pass" placeholder="Enter Password" required id="pass"> 
 				<br>
-				<div id="result4">Enter Password</div>
 				<br>
 			</div>
 			<button type="button" onclick="validate1();">Submit</button>
   			<button type="reset" onclick="validate2();">Clear</button>
-
+  			<div id="result3"> Enter Email </div>
+			<div id="result4">Enter Password</div>
   			<div id="result1">Login Sucessful </div>
 			<div id="result2">Login UnSucessful </div>
   		</form>

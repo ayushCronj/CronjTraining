@@ -48,3 +48,21 @@ li a:hover:not(.active) {
 .active {
     background-color: rgb(241, 9, 9);
 }
+#result11 , #result11e
+{
+	text-align: center;
+	background-color: limegreen;
+	color: white;
+}
+#result1, #result2, #result3,  #result4,  #result5,  #result6,  #result7,  #result8,  #result9 , #result10 
+{
+	text-align: center;
+	background-color: red;
+	color: white;
+}
+#result1e, #result2e, #result3e,  #result4e,  #result5e,  #result6e,  #result7e,  #result8e,  #result9e , #result10e 
+{
+	text-align: center;
+	background-color: red;
+	color: white;
+}

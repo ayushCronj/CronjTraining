@@ -10,7 +10,7 @@
  	margin-right: 400px;
  	margin-top: 100px;
  	margin-bottom: 400px;
- } 
+ }
  #p1
  {
  	color: black;
@@ -21,7 +21,7 @@
 	background-color: limegreen;
 	color: white;
 }
- #result2, #result3 , #result4, #emailerror , #passerror
+ #result2, #result3 , #result4
 {
 	text-align: center;
 	background-color: red;
