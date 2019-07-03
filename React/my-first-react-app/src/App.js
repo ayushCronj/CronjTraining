@@ -29,8 +29,6 @@ class App extends Component {
               <p><button onClick={this.add}>+</button> </p>) :
             <p><button onClick={this.add}>+</button> <button onClick={this.subtract}>-</button> </p>
         } </div>
-
-
         <p> {this.state.count} </p>
       </div>
     );
