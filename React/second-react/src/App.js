@@ -16,7 +16,7 @@ class App extends Component {
     // this.setState((prevState) => ({ count: prevState.count + 1 }));
     this.setState({ count: this.state.count + 1 });
     this.setState({
-      myArray: [...this.state.myArray, this.state.count +1 ]
+      myArray: [...this.state.myArray, this.state.count + 1]
     })
   }
   render() {
