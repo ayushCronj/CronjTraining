@@ -2,16 +2,6 @@ import React, { Component } from 'react';
 //import logo from './logo.svg';
 //import './App.css';
 
-class List1 extends Component {
-  render() {
-    return (
-      <div>
-        {this.props.value}
-      </div>
-    );
-  }
-}
-
 class App extends Component {
 
   constructor(props) {
@@ -35,7 +25,7 @@ class App extends Component {
         <p><button onClick={this.add}> + </button> </p>
         <p>{this.state.count} </p>
         {console.log(this.state.myArray)}
-        {this.state.myArray.map(item => <List1 key={item} value={item} />)}
+        {this.state.myArray.map(item => <div> {item} </div>)}
       </div>
     );
   }
