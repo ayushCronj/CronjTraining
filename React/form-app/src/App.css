@@ -2,23 +2,19 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.Display {
+  border: 2px black solid;
+  margin-left: 500px;
+  margin-right: 500px;
+  background-color: greenyellow;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.Namelabel {
+  color: darkblue;
+  font: bold italic 20px/30px Sans-serif;
 }
 
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.Agelabel {
+  color: darkblue;
+  font: bold italic 20px/30px Sans-serif;
 }

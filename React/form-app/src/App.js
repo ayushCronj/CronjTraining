@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import Form from './form'
+import Form from './Form'
 
 class App extends Component {
   constructor(props) {
@@ -26,9 +26,15 @@ class App extends Component {
         <Form display={this.display} />
         <br />
         <br />
-        NAME : <label> {this.state.name}</label>
-        <br />
-        AGE : <label> {this.state.age}</label>
+        <div className="Display">
+          <br />
+          Submitted Name is <label className="Namelabel"> {this.state.name}</label>
+          <br />
+          <br />
+          Submitted Age is <label className="Agelabel"> {this.state.age}</label>
+          <br />
+          <br />
+        </div>
       </div>
     );
   }

@@ -1,0 +1,15 @@
+.Form {
+    border: 15px black solid;
+    background-color: darkorange;
+    margin-left: 500px;
+    margin-right: 500px;
+    margin-top: 150px;
+}
+
+#formage {
+    border: 1px solid;
+}
+
+#formname {
+    border: 1px solid;
+}
