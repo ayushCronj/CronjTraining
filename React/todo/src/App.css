@@ -1,0 +1,26 @@
+.App {
+  text-align: center;
+}
+
+#table2 {
+  border-collapse: collapse;
+  /* margin-left: 550px;
+  margin-right: 100px; */
+  margin: auto;
+}
+
+#table1 {
+  border-collapse: collapse;
+  /* margin-left: 450px;
+  margin-right: 100px; */
+  margin: auto;
+}
+#filterdiv {
+  /* margin-top : 200px; */
+  margin: auto;
+}
+
+table, th, td {
+  border: 1px solid black;
+  background-color: greenyellow;
+}
