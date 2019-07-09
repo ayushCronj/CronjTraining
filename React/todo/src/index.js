@@ -20,8 +20,8 @@ class Start extends Component {
   render() {
     return (
       <div>
-        {this.state.clickme == false ? <button id="enter" onClick={this.todo}> Click Me to Enter To-Do List </button> : null}
-        {this.state.clickme == true ? <App /> : null}
+        {this.state.clickme === false ? <div id="enterdiv"><button id="enter" onClick={this.todo}> Click Me to Enter To-Do List </button> </div> : null}
+        {this.state.clickme === true ? <App /> : null}
 
       </div>
     );

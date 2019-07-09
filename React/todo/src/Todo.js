@@ -7,8 +7,8 @@ class Todo extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleSubmit(event) {
-        this.props.submit(event.target.elements.formname.value, event.target.elements.formpriority.value, event.target.elements.formtime.value, event.target.elements.formstatus.value);
-        event.preventDefault();
+        this.props.submit(event.target.elements.formname.value, event.target.elements.formpriority.value, event.target.elements.formtime.value);
+        event.preventDefault()
     }
 
     render() {
@@ -22,12 +22,12 @@ class Todo extends Component {
                     <b>Priority: </b>< input type="number" id="formpriority" />
                     <br />
                     <br />
-                    <b>Time: </b>< input type="time" id="formtime" />
+                    <b>Time: </b>< input type="datetime-local" min="2019-07-04T08:30" id="formtime" />
                     <br />
                     <br />
-                    <b>Status: </b>< input id="formstatus" />
+                    {/* <b>Status: </b>< input id="formstatus" />
                     <br />
-                    <br />
+                    <br /> */}
                     <input type="submit" value="Submit" />
                 </form>
             </div>

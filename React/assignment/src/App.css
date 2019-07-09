@@ -1,0 +1,37 @@
+@import '~antd/dist/antd.css'; 
+
+#main {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+#main1 {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  background: rgb(248, 243, 243);
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+.inside{
+  width: 300px;
+  height: 500px;
+  border: 1px solid rgb(238, 233, 233);
+}
+
+.photo {
+  background: rgb(235, 233, 233);
+}
+
+.icon:hover {
+  background:rgb(151, 231, 231);
+}
+
+.icondel:hover {
+  background:rgb(180, 34, 34);
+}
