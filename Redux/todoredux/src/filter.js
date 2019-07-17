@@ -1,12 +1,9 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 import './style.css';
 
-const mapStateToProps = state => {
-    return { filterarray: state.filterarray };
-};
+class List extends Component {
 
-class ConnectedList1 extends Component {
     render() {
         return (
             <table id="table2">
@@ -18,8 +15,13 @@ class ConnectedList1 extends Component {
                         <th> Status </th>
                     </tr>
                     {this.props.filterarray.map((el, index) => (
-                        <tr className={el.status === "COMPLETED" ? "complete" : null} key={index}>
-                            <td>{el.title}</td><td>{el.priority}</td><td>{el.time}</td><td>{el.status}</td>
+                        <tr
+                            className={el.status === "COMPLETED" ? "complete" : null}
+                            key={index}>
+                            <td>{el.name}</td>
+                            <td>{el.priority}</td>
+                            <td>{el.time}</td>
+                            <td>{el.status}</td>
                         </tr>
                     ))}
                 </tbody>
@@ -28,5 +30,4 @@ class ConnectedList1 extends Component {
     }
 }
 
-const List1 = connect(mapStateToProps)(ConnectedList1);
-export default List1;
+export default List;

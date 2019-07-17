@@ -1,14 +1,8 @@
-
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addArticle } from "./actions";
+import {Icon} from "antd";
 import './style.css';
-
-function mapDispatchToProps(dispatch) {
-    return {
-        addArticle: article => dispatch(addArticle(article))
-    };
-}
 
 class ConnectedForm extends Component {
     constructor() {
@@ -21,6 +15,7 @@ class ConnectedForm extends Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
     handleSubmit(event) {
         const title = event.target.elements.title.value;
         const priority = event.target.elements.priority.value;
@@ -30,6 +25,7 @@ class ConnectedForm extends Component {
         event.preventDefault();
         this.setState({ title: "", priority: "", time: "" });
     }
+
     render() {
         const { title } = this.state.title;
         const { priority } = this.state.priority;
@@ -40,6 +36,7 @@ class ConnectedForm extends Component {
                 <br />
                 <div>
                     NAME:<input
+                        required
                         type="text"
                         id="title"
                         value={title} />
@@ -48,15 +45,20 @@ class ConnectedForm extends Component {
                 <br />
                 <div >
                     PRIORITY: <input
+                        required
                         type="number"
                         id="priority"
                         value={priority}
                     />
+                    // {<Button onClick={() => this.props.sortPriority("Sort")}> Sort by Priority</Button>}
+                        // <Button onClick={() => this.props.sortTime("Sort")}> Sort by Time</Button>
+                        // <Button onClick={() => this.props.sortStatus("Sort")}> Sort by Status</Button>
                 </div>
                 <br />
                 <br />
                 <div>
                     TIME:<input
+                        required
                         type="datetime-local"
                         id="time"
                         value={time}
@@ -64,12 +66,19 @@ class ConnectedForm extends Component {
                 </div>
                 <br />
                 <br />
-                <button type="submit"> SAVE TO-DO </button>
+                <button type="submit"> SAVE </button>
                 <br />
                 <br />
             </form>
         );
     }
 }
+
+function mapDispatchToProps(dispatch) {
+    return {
+        addArticle: article => dispatch(addArticle(article))
+    };
+}
+
 const Form = connect(null, mapDispatchToProps)(ConnectedForm);
 export default Form;

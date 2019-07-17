@@ -1,0 +1,100 @@
+@import '~antd/dist/antd.css'; 
+
+.App {
+  text-align: center;
+  background: lightcyan;
+}
+.photo {
+  background: rgb(212, 200, 200);
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+#main {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+.container {
+  background: #b0b1b9;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+  max-width: 30rem;
+  outline: none;
+  padding: 1.6rem;
+  text-align: center;
+}
+
+table, tr {
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin: auto;
+  font-size: 15px;
+}
+th,td {
+  border: 1px solid black;
+  padding: 8px;
+}
+
+.inside{
+  width: 300px;
+  height: 600px;
+  border: 1px solid rgb(238, 233, 233);
+}
+
+.Radio{
+  border: 1px solid black;
+  margin: auto;
+}
+
+#title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: .4rem;
+}
+
+#description{
+  font-size: 1rem;
+  margin-bottom: .5rem;
+}
+
+#date{
+  font-size: 1rem;
+  margin-bottom: .2rem;
+}
+
+#cost{
+  font-size: 1rem;
+  margin-bottom: .2rem;
+}

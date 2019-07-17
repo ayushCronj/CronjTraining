@@ -1,17 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Icon } from "antd";
 import './style.css';
-
-const mapStateToProps = state => {
-    return { articles: state.articles };
-};
-
-function mapDispatchToProps(dispatch) {
-    return {
-        markArticle: index => dispatch({ type: "MARK_ARTICLE", index }),
-        deleteArticle: index => dispatch({ type: "DELETE_ARTICLE", index })
-    };
-}
 
 class ConnectedList extends Component {
     render() {
@@ -23,14 +13,41 @@ class ConnectedList extends Component {
                         <th> Priority </th>
                         <th> Time </th>
                         <th> Status </th>
-                        <th> Mark </th>
-                        <th> Delete </th>
+                        <th colSpan="3"> Actions </th>
                     </tr>
-                    {this.props.articles.map((el, index) => (
-                        <tr className={el.status === "COMPLETED" ? "complete" : null} key={index}>
-                            <td>{el.title}</td><td>{el.priority}</td><td>{el.time}</td><td>{el.status}</td>
-                            <td><button onClick={() => this.props.markArticle(index)}> Mark as Completed </button></td>
-                            <td><button onClick={() => this.props.deleteArticle(index)}> Delete </button></td>
+                    {this.props.todos.map((el, index) => (
+                        <tr
+                            className={el.status === "COMPLETED" ? "complete" : null}
+                            key={index}>
+                            <td>{el.name}</td>
+                            <td>{el.priority}</td>
+                            <td>{el.time}</td>
+                            <td>{el.status}</td>
+                            {el.status === "COMPLETED" ?
+                                <td colSpan="3"><Icon
+                                    type="delete"
+                                    theme="filled"
+                                    style={{ fontSize: 20 }}
+                                    onClick={() => this.props.deleteTodo(index)} /> </td>
+                                :
+                                <span>
+                                    <td><Icon
+                                        type="check-square"
+                                        theme="filled"
+                                        style={{ fontSize: 20 }}
+                                        onClick={() => this.props.markTodo(index)} /></td>
+                                    <td><Icon
+                                        type="delete"
+                                        theme="filled"
+                                        style={{ fontSize: 20 }}
+                                        onClick={() => this.props.deleteTodo(index)} /> </td>
+                                    <td><Icon
+                                        type="edit"
+                                        theme="filled"
+                                        style={{ fontSize: 20 }}
+                                        onClick={() => this.props.editTodo(index)} /> </td>
+                                </span>
+                            }
                         </tr>
                     ))}
                 </tbody>
@@ -39,5 +56,12 @@ class ConnectedList extends Component {
     }
 }
 
-const List = connect(mapStateToProps, mapDispatchToProps)(ConnectedList);
+function mapDispatchToProps(dispatch) {
+    return {
+        markTodo: index => dispatch({ type: "MARK_TODO", index }),
+        deleteTodo: index => dispatch({ type: "DELETE_TODO", index })
+    };
+}
+
+const List = connect(null, mapDispatchToProps)(ConnectedList);
 export default List;
