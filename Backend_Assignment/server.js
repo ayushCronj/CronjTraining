@@ -212,7 +212,13 @@ app.get('/api/users/filter/many', async (req, res) => {
     if (!req.query.hasOwnProperty("gender")) {
         req.query["gender"] = "";
     }
-    let query1 = req.query.gender;
+    let query1 = "";
+    if (req.query.gender === "") {
+        query1 = req.query.gender;
+    }
+    else {
+        query1 = "^" + req.query.gender + "$";
+    }
     console.log(req.query);
     await Users.find({
         $and: [

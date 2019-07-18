@@ -1,4 +1,4 @@
-API
+User Management API
 
 Install node , npm and nodemon first
 
