@@ -8,7 +8,6 @@ exports.createUser = function (req, res) {
     if (req.body.hasOwnProperty("dob")) {
         let today = new Date();
         let dob = new Date(req.body.dob);
-        console.log(dob);
         var age = today.getFullYear() - dob.getFullYear();
         let month = today.getMonth() - dob.getMonth();
         let date = today.getDate() - dob.getDate();
@@ -16,7 +15,6 @@ exports.createUser = function (req, res) {
             age--;
         else if (month == 0 && date < 0)
             age--;
-        console.log(age);
         postdata.age = age;
     }
     console.log(postdata);
@@ -150,34 +148,32 @@ exports.filterAge = function (req, res) {
 
 //compound filtering
 exports.filterMany = function (req, res) {
-    console.log(Object.keys(req.query));
     if (req.query.hasOwnProperty("city")) {
-        var new_o = {};
+        var temp = {};
         for (var i in req.query) {
-            if (i == "city") new_o["address.city"] = req.query["city"];
-            else new_o[i] = req.query[i];
+            if (i == "city") temp["address.city"] = req.query["city"];
+            else temp[i] = req.query[i];
         }
-        req.query = new_o;
+        req.query = temp;
     }
-    console.log(req.query);
-    let querybuilder = {};
+    let filterQuery = {};
     if (req.query.name) {
-        querybuilder.name = { $regex: req.query.name, $options: "i" };
+        filterQuery.name = { $regex: req.query.name, $options: "i" };
     }
     if (req.query.profession) {
-        querybuilder.profession = { $regex: req.query.profession, $options: "i" };
+        filterQuery.profession = { $regex: req.query.profession, $options: "i" };
     }
     if (req.query.age) {
-        querybuilder.age = { $gte: parseInt(req.query.age) };
+        filterQuery.age = { $gte: parseInt(req.query.age) };
     }
     if (req.query.gender) {
         let query1 = "^" + req.query.gender + "$";
-        querybuilder.gender = { $regex: query1, $options: "i" };
+        filterQuery.gender = { $regex: query1, $options: "i" };
     }
     if (req.query["address.city"]) {
-        querybuilder["address.city"] = { $regex: req.query["address.city"], $options: "i" };
+        filterQuery["address.city"] = { $regex: req.query["address.city"], $options: "i" };
     }
-    Users.find(querybuilder).exec().then((result) => {
+    Users.find(filterQuery).exec().then((result) => {
         res.send(result);
     }
     ).catch((error) => {
