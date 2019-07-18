@@ -10,18 +10,17 @@ Then to start API use -
 
 Different Routes are-
 
-1. Create - POST request on http://localhost:3002/api/users/create
+1. Create - POST request on http://localhost:3002/api/users/create with Content as body of POST Request.
 
-2. Get User By ID - GET request on http://localhost:3002/api/users/get/:id 
+2. Get All Users - GET request on http://localhost:3002/api/users/get
+
+3. Get Specific User By ID - GET request on http://localhost:3002/api/users/get/:id 
                 (For Eg. - http://localhost:3002/api/users/get/ffc7823d-03c3-4c88-8364-d32dff5ad795)
 
-3. Update User -  POST request on http://localhost:3002/api/users/update/:id 
-            (For Eg. - http://localhost:3002/api/users/update/ffc7823d-03c3-4c88-8364-d32dff5ad795)
+4. Update User -  POST request on http://localhost:3002/api/users/update with content to be updated in   Body of POST request along with userID. 
 
-4. Delete User - GET request on http://localhost:3002/api/users/delete/:id 
+5. Delete User - GET request on http://localhost:3002/api/users/delete/:id 
             (For Eg. - http://localhost:3002/api/users/delete/ffc7823d-03c3-4c88-8364-d32dff5ad795)
-
-5. Show All - GET request on http://localhost:3002/api/users/filter/all
 
 6. Filter By Name - GET request on http://localhost:3002/api/users/filter/name/:name
             (For Eg. - http://localhost:3002/api/users/filter/name/ayush)
@@ -40,4 +39,3 @@ Different Routes are-
 
 11. Compound Filtering - GET request on http://localhost:3002/api/users/filter/many?query
             (For Eg. - http://localhost:3002/api/users/filter/many?name=ayush&age=22)
-
