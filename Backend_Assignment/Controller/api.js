@@ -1,5 +1,6 @@
 const uuidv4 = require('uuid/v4');
 const Users = require('../Model/dbschema');
+const services = require('../services/services');
 
 //create user
 exports.createUser = function (req, res) {
@@ -18,49 +19,41 @@ exports.createUser = function (req, res) {
         postdata.age = age;
     }
     console.log(postdata);
-    Users.create(postdata, function (err, postdata) {
-        if (err) {
-            res.status(500).send(err);
-        }
-        res.json(postdata);
-    });
+     services.createFunction(postdata).then((result) => {res.send(result)}).catch((err)=>res.status(500).send(err));
 }
 
 //getuserbyID
 exports.getUserById = function (req, res) {
-    // console.log(req.params.id);
-    Users.find({ userID: req.params.id }).exec().then((result) => {
+    services.findIDUser(req.params.id).then((result) => {
         if (result.length === 0) {
-            res.status(404).send("ID Not Found");
+            res.status(404).send("User ID not found");
         }
         else {
             res.send(result);
         }
-    }
-    ).catch((error) => {
-        res.status(500).send(error);
+    }).catch((err) => {
+        res.status(500).send("Error");
     })
 }
 
 //get all users
 exports.getUser = function (req, res) {
-    Users.find({}).exec().then((result) => {
+    services.findUser().then((result) => {
         if (result.length === 0) {
-            res.send("User List Empty");
+            res.send("User List empty");
         }
         else {
             res.send(result);
         }
-    }
-    ).catch((error) => {
-        res.status(500).send(error);
+    }).catch((err) => {
+        res.status(500).send("Error");
     })
 }
 
 //update a user
 exports.updateUser = function (req, res) {
     let query = { userID: req.body.userID }
-    Users.updateOne(query, req.body)
+    services.updateFunction(query,req.body)
         .then(data => {
             if (data.n == 0) {
                 res.status(404).send("User ID not found");
@@ -80,7 +73,7 @@ exports.updateUser = function (req, res) {
 exports.deleteUser = function (req, res) {
     console.log(req.params.id);
     let query = { userID: req.params.id };
-    Users.deleteOne(query).exec().then((result) => {
+    services.deleteFunction(query).then((result) => {
         if (result.deletedCount == 0) {
             res.status(404).send("User Id not found");
         }
@@ -92,12 +85,10 @@ exports.deleteUser = function (req, res) {
 
 //filter by name
 exports.filterName = function (req, res) {
-    console.log(req.params.name);
-    Users.find({ name: { $regex: req.params.name, $options: "i" } }).exec().then((result) => {
+    services.filterNameFunction(req.params.name).then((result) => {
         res.send(result);
-    }
-    ).catch((error) => {
-        res.status(500).send(error);
+    }).catch((err) => {
+        res.status(500).send("Error");
     })
 }
 
@@ -105,44 +96,37 @@ exports.filterName = function (req, res) {
 exports.filterGender = function (req, res) {
     console.log(req.params.name);
     let query = "^" + req.params.name + "$";
-    Users.find({ gender: { '$regex': query, $options: 'i' } }).exec().then((result) => {
+    services.filterGenderFunction(query).then((result) => {
         res.send(result);
-    }
-    ).catch((error) => {
-        res.status(500).send(error);
+    }).catch((err) => {
+        res.status(500).send("Error");
     })
 }
 
 //filter by city
 exports.filterCity = function (req, res) {
-    console.log(req.params.name);
-    Users.find({ "address.city": { $regex: req.params.name, $options: "i" } }).exec().then((result) => {
+    services.filterCityFunction(req.params.name).then((result) => {
         res.send(result);
-    }
-    ).catch((error) => {
-        res.status(500).send(error);
+    }).catch((err) => {
+        res.status(500).send("Error");
     })
 }
 
 //filter by profession
 exports.filterProfession = function (req, res) {
-    console.log(req.params.name);
-    Users.find({ profession: { $regex: req.params.name, $options: "i" } }).exec().then((result) => {
+    services.filterProfessionFunction(req.params.name).then((result) => {
         res.send(result);
-    }
-    ).catch((error) => {
-        res.status(500).send(error);
+    }).catch((err) => {
+        res.status(500).send("Error");
     })
 }
 
 //filter by age
 exports.filterAge = function (req, res) {
-    console.log(req.params.name);
-    Users.find({ age: { $gte: parseInt(req.params.name) } }).exec().then((result) => {
+    services.filterAgeFunction(req.params.name).then((result) => {
         res.send(result);
-    }
-    ).catch((error) => {
-        res.status(500).send(error);
+    }).catch((err) => {
+        res.status(500).send("Error");
     })
 }
 
@@ -173,10 +157,9 @@ exports.filterMany = function (req, res) {
     if (req.query["address.city"]) {
         filterQuery["address.city"] = { $regex: req.query["address.city"], $options: "i" };
     }
-    Users.find(filterQuery).exec().then((result) => {
+    services.filterManyFunction(filterQuery).then((result) => {
         res.send(result);
-    }
-    ).catch((error) => {
-        res.status(500).send(error);
+    }).catch((err) => {
+        res.status(500).send("Error");
     })
 }
