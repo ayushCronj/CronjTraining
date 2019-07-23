@@ -123,7 +123,7 @@ exports.filterProfession = function (req, res) {
 
 //filter by age
 exports.filterAge = function (req, res) {
-    services.filterAgeFunction(req.params.name).then((result) => {
+    services.filterAgeFunction(parseInt(req.params.name)).then((result) => {
         res.send(result);
     }).catch((err) => {
         res.status(500).send("Error");

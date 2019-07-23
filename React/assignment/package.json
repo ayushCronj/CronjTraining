@@ -3,9 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^3.20.5",
+    "file-saver": "^2.0.2",
     "react": "^16.8.6",
+    "react-data-export": "^0.5.0",
     "react-dom": "^16.8.6",
-    "react-scripts": "0.9.5"
+    "react-excel-renderer": "^1.1.0",
+    "react-scripts": "0.9.5",
+    "xlsx": "^0.14.3"
   },
   "devDependencies": {},
   "scripts": {
