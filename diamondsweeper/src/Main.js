@@ -2,6 +2,17 @@ import React, { Component } from 'react';
 import { Icon, Button } from 'antd';
 import './Main.css';
 
+let clickedarr = [
+    [false, false, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false],
+]
+
 class Main extends Component {
     constructor(props) {
         super(props);
@@ -11,7 +22,8 @@ class Main extends Component {
             diamondcount: 8,
             score: 56,
             prevx: -1,
-            prevy: -1
+            prevy: -1,
+            clickedarray: clickedarr,
         }
         this.buttonclicked = this.buttonclicked.bind(this);
     }
@@ -26,6 +38,7 @@ class Main extends Component {
             Y[i] = Math.floor(this.state.arr1[i] % 8);
         }
         let boardchange = this.state.board;
+        let clickchange = this.state.clickedarray;
         let scores = this.state.score;
         let distance = [];
         let arr1 = this.state.arr1;
@@ -44,6 +57,7 @@ class Main extends Component {
                 }
             }
             arr1.splice(index, 1);
+            clickchange[x][y] = true;
             if (arr1.length === 0) {
                 this.props.calculateScores(scores);
             }
@@ -52,13 +66,14 @@ class Main extends Component {
             this.setState({
                 board: boardchange,
                 arr1: arr1,
-                diamondcount: diamondcount
+                diamondcount: diamondcount,
+                clickedarray: clickchange,
             })
         }
-        else if (arr1.length === 0) {
-            this.props.calculateScores(scores);
-        }
-        else {
+        // else if (arr1.length === 0) {
+        //     this.props.calculateScores(scores);
+        // }
+        else if (arr1.length > 0) {
 
             for (let i = 0; i < this.state.arr1.length; i++) {
 
@@ -73,35 +88,42 @@ class Main extends Component {
             let ydiff = y - miny;
             if (xdiff > 0 && ydiff === 0) {
                 boardchange[x][y] = 'UP';
+                clickchange[x][y] = true;
                 scores--;
             }
             else if (xdiff < 0 && ydiff === 0) {
                 boardchange[x][y] = 'DOWN';
-
+                clickchange[x][y] = true;
                 scores--;
             }
             else if (ydiff > 0 && xdiff === 0) {
                 boardchange[x][y] = 'LEFT';
+                clickchange[x][y] = true;
                 scores--;
             }
             else if (ydiff < 0 && xdiff === 0) {
                 boardchange[x][y] = 'RIGHT';
+                clickchange[x][y] = true;
                 scores--;
             }
             else if (xdiff > 0 && ydiff > 0) {
                 boardchange[x][y] = 'LEFT';
+                clickchange[x][y] = true;
                 scores--;
             }
             else if (xdiff < 0 && ydiff < 0) {
                 boardchange[x][y] = 'RIGHT';
+                clickchange[x][y] = true;
                 scores--;
             }
             else if (xdiff > 0 && ydiff < 0) {
                 boardchange[x][y] = 'UP';
+                clickchange[x][y] = true;
                 scores--;
             }
             else {
                 boardchange[x][y] = 'DOWN';
+                clickchange[x][y] = true;
 
                 scores--;
             }
@@ -109,7 +131,8 @@ class Main extends Component {
                 board: boardchange,
                 score: scores,
                 prevx: x,
-                prevy: y
+                prevy: y,
+                clickedarray: clickchange,
             })
         }
     }
@@ -133,8 +156,10 @@ class Main extends Component {
                 else if (button === "")
                     button = <Icon type="sketch" style={{ color: "white" }} />
                 return (
-                    <Button onClick={() => this.buttonclicked(button, x, y)}> {button} </Button>
-
+                    <div>
+                        {this.state.clickedarray[x][y] === false ? <Button onClick={() => this.buttonclicked(button, x, y)}> {button} </Button> :
+                            <Button> {button} </Button>}
+                    </div>
                 )
             }
             )}

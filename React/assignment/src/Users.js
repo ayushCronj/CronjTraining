@@ -54,22 +54,24 @@ class Users extends Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
-    // const multiDataSet = [
-    //   {
-    //     columns: ["Id", "Name", "Username", "Email", "Street","Suite","City","ZipCode","Latitude","Longitude", "Phone", "Website", "Company Name", "Company Catchphrase","company Bs"],
-    //     data: [
-    //       [this.props.user.id, 
-    //       this.props.user.name, 
-    //       this.props.user.username,
-    //       this.props.user.email,
-    //       this.props.user.address.street ,  this.props.user.address.suite ,
- //this.props.user.address.city , this.props.user.address.zipcode , this.props.user.address.geo.lat , this.props.user.address.geo.lng,
-    //       this.props.user.phone, 
-    //       this.props.user.website,  
-    //       this.props.user.company.name , this.props.user.company.catchPhrase , this.props.user.company.bs],
-    //     ]
-    //   },
-    // ]
+    const multiDataSet = [
+      {
+        // "Street","Suite","City","ZipCode","Latitude","Longitude", "Company Name", "Company Catchphrase","company Bs"
+        columns: ["Id", "Name", "Username", "Email", "Phone", "Website"],
+        data: [
+          [this.props.user.id,
+          this.props.user.name,
+          this.props.user.username,
+          this.props.user.email,
+          //           this.props.user.address.street ,  this.props.user.address.suite ,
+          //  this.props.user.address.city , this.props.user.address.zipcode , this.props.user.address.geo.lat , this.props.user.address.geo.lng,
+          this.props.user.phone,
+          this.props.user.website,
+            // this.props.user.company.name , this.props.user.company.catchPhrase , this.props.user.company.bs
+          ],
+        ]
+      },
+    ]
     return (
       <Card
         style={{ margin: 20 }}
@@ -106,9 +108,9 @@ class Users extends Component {
             <Icon className="icon" onClick={this.openModal} type="edit" theme="filled" style={{ fontSize: 25 }} />
             <div style={{ width: "1px", background: "gray", height: "25px", float: "right" }}> </div>
             <Icon className="icondel" onClick={() => { this.props.deleteUser(this.props.index); }} type="delete" theme="filled" style={{ fontSize: 25 }} />
-            {/* <ExcelFile element={<Button type="primary"><Icon type="export" /></Button>}>
+            <ExcelFile element={<Button type="primary"><Icon type="export" /></Button>}>
               <ExcelSheet dataSet={multiDataSet} name="Organization" />
-            </ExcelFile> */}
+            </ExcelFile>
           </div>
         </div>
 
